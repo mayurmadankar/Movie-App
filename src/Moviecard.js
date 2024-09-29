@@ -5,41 +5,48 @@ class MovieCard extends Component {
     super();
     this.state = {
       title: "The Avengers",
-      plot: " Action Movie",
+      plot: "Action Movie",
       price: 199,
       rating: 8.9,
-      stars: 0
+      stars: 0,
+      fav: false,
+      cart: false
     };
   }
+
   removeStars = () => {
     if (this.state.stars <= 0) {
       return;
     }
     this.setState({
-      stars: (this.state.stars -= 0.5)
+      stars: this.state.stars - 0.5
     });
   };
+
   addStars = () => {
     if (this.state.stars >= 5) {
       return;
     }
-    //form one
-    // this.setState({
-    //   stars: (this.state.stars += 0.5)
-    // });
 
-    // second form
-    this.setState((prevState) => {
-      return {
-        stars: prevState.stars + 0.5
-      };
-    });
+    this.setState((prevState) => ({
+      stars: prevState.stars + 0.5
+    }));
+  };
 
-    // this.state.stars += 0.5;
-    // console.log("this:", this.state.stars);
+  toggleFavourite = () => {
+    this.setState((prevState) => ({
+      fav: !prevState.fav
+    }));
+  };
+
+  toggleCart = () => {
+    this.setState((prevState) => ({
+      cart: !prevState.cart
+    }));
   };
   render() {
-    const { title, plot, price, rating, stars } = this.state;
+    const { title, plot, price, rating, stars, fav ,cart} = this.state;
+
     return (
       <div className="main">
         <div className="movie-card">
@@ -73,11 +80,25 @@ class MovieCard extends Component {
                   src="https://cdn-icons-png.flaticon.com/128/748/748113.png"
                   onClick={this.addStars}
                 />
-
                 <span className="starCount">{stars}</span>
               </div>
-              <button className="favourite-btn">Favourite</button>
-              <button className="cart-btn">Add to cart</button>
+              {fav ? (
+                <button
+                  className="unfavourite-btn"
+                  onClick={this.toggleFavourite}
+                >
+                  Un-Favourite
+                </button>
+              ) : (
+                <button
+                  className="favourite-btn"
+                  onClick={this.toggleFavourite}
+                >
+                  Favourite
+                </button>
+              )}
+              <button className={cart?"remove-btn":"cart-btn"} onClick={this.toggleCart}>{cart?"Remove from cart":"Add to cart"}</button>
+              
             </div>
           </div>
         </div>
@@ -85,4 +106,5 @@ class MovieCard extends Component {
     );
   }
 }
+
 export default MovieCard;
