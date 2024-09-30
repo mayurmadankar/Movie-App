@@ -45,7 +45,7 @@ class MovieCard extends Component {
     }));
   };
   render() {
-    const { title, plot, price, rating, stars, fav ,cart} = this.state;
+    const { title, plot, price, rating, stars, fav, cart } = this.state;
 
     return (
       <div className="main">
@@ -82,23 +82,20 @@ class MovieCard extends Component {
                 />
                 <span className="starCount">{stars}</span>
               </div>
-              {fav ? (
-                <button
-                  className="unfavourite-btn"
-                  onClick={this.toggleFavourite}
-                >
-                  Un-Favourite
-                </button>
-              ) : (
-                <button
-                  className="favourite-btn"
-                  onClick={this.toggleFavourite}
-                >
-                  Favourite
-                </button>
-              )}
-              <button className={cart?"remove-btn":"cart-btn"} onClick={this.toggleCart}>{cart?"Remove from cart":"Add to cart"}</button>
-              
+
+              <button
+                className={fav ?"unfavourite-btn":"favourite-btn"}
+                onClick={this.toggleFavourite}
+              >
+                {fav ? "Un-Favourite" : "Favourite"}
+              </button>
+
+              <button
+                className={cart ? "remove-btn" : "cart-btn"}
+                onClick={this.toggleCart}
+              >
+                {cart ? "Remove from cart" : "Add to cart"}
+              </button>
             </div>
           </div>
         </div>
