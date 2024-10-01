@@ -1,19 +1,6 @@
 import { Component } from "react";
 
 class MovieCard extends Component {
-  constructor() {
-    super();
-    this.state = {
-      title: "The Avengers",
-      plot: "Action Movie",
-      price: 199,
-      rating: 8.9,
-      stars: 0,
-      fav: false,
-      cart: false
-    };
-  }
-
   removeStars = () => {
     if (this.state.stars <= 0) {
       return;
@@ -45,7 +32,7 @@ class MovieCard extends Component {
     }));
   };
   render() {
-    const { title, plot, price, rating, stars, fav, cart } = this.state;
+    const { title, plot, price, rating, stars, fav, cart } = this.props.movies;
 
     return (
       <div className="main">
@@ -84,7 +71,7 @@ class MovieCard extends Component {
               </div>
 
               <button
-                className={fav ?"unfavourite-btn":"favourite-btn"}
+                className={fav ? "unfavourite-btn" : "favourite-btn"}
                 onClick={this.toggleFavourite}
               >
                 {fav ? "Un-Favourite" : "Favourite"}
