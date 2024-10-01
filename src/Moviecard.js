@@ -32,7 +32,8 @@ class MovieCard extends Component {
     }));
   };
   render() {
-    const { title, plot, price, rating, stars, fav, cart } = this.props.movies;
+    const { movies, addStars } = this.props;
+    const { title, plot, price, rating, star, fav, cart } = this.props.movies;
 
     return (
       <div className="main">
@@ -65,9 +66,11 @@ class MovieCard extends Component {
                   alt="increase"
                   className="str-btn"
                   src="https://cdn-icons-png.flaticon.com/128/748/748113.png"
-                  onClick={this.addStars}
+                  onClick={() => {
+                    addStars(movies);
+                  }}
                 />
-                <span className="starCount">{stars}</span>
+                <span className="starCount">{star}</span>
               </div>
 
               <button
