@@ -1,6 +1,6 @@
 import MovieList from "./MovieList.js";
 import Student from "./Student.js";
-import Navbar from "./navabar.js";
+import Navbar from "./navbar.js";
 
 function App() {
   return (
