@@ -3,16 +3,14 @@ import { Component } from "react";
 class MovieCard extends Component {
   render() {
     const { movies, addStars, removeStars, favToggle, cartToggle } = this.props;
-    const { title, plot, price, rating, star, fav, cart } = this.props.movies;
+    const { title, plot, price, poster, rating, star, fav, cart } =
+      this.props.movies;
 
     return (
       <div className="main">
         <div className="movie-card">
           <div className="left">
-            <img
-              alt="Poster"
-              src="https://cdn.marvel.com/content/1x/avengersendgame_lob_crd_05.jpg"
-            />
+            <img alt="Poster" src={poster} />
           </div>
           <div className="right">
             <div className="title">{title}</div>
