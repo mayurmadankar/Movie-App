@@ -1,5 +1,5 @@
 import { Component } from "react";
-import MovieCard from "./Moviecard.js"; // Assuming you have a MovieCard component
+import MovieCard from "./Moviecard.js";
 
 class MovieList extends Component {
   constructor() {
@@ -42,7 +42,6 @@ class MovieList extends Component {
       ]
     };
   }
-
   handleIncStar = (movie) => {
     const { movies } = this.state;
     const mid = movies.indexOf(movie);
@@ -54,6 +53,34 @@ class MovieList extends Component {
       movies: movies
     });
   };
+  handleDecStar = (movie) => {
+    const { movies } = this.state;
+    const mid = movies.indexOf(movie);
+    if (movies[mid].star <= 0) {
+      return;
+    }
+    movies[mid].star -= 0.5;
+    this.setState({
+      movies: movies
+    });
+  };
+  toggleFavourite = (movie) => {
+    const { movies } = this.state;
+    const mid = movies.indexOf(movie);
+    movies[mid].fav = !movies[mid].fav;
+    this.setState({
+      movies: movies
+    });
+  };
+
+  toggleCart = (movie) => {
+    const { movies } = this.state;
+    const mid = movies.indexOf(movie);
+    movies[mid].cart = !movies[mid].cart;
+    this.setState({
+      movies: movies
+    });
+  };
   render() {
     const { movies } = this.state;
     console.log(movies);
@@ -61,7 +88,14 @@ class MovieList extends Component {
     return (
       <div>
         {movies.map((movie, index) => (
-          <MovieCard movies={movie} key={index} addStars={this.handleIncStar} />
+          <MovieCard
+            movies={movie}
+            key={index}
+            addStars={this.handleIncStar}
+            removeStars={this.handleDecStar}
+            favToggle={this.toggleFavourite}
+            cartToggle={this.toggleCart}
+          />
         ))}
       </div>
     );
