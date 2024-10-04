@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Nav = styled.div`
   width: 100%;
   height: 45px;
-  background-color: purple;
+  background: linear-gradient(#e66465, #9198e5);
   display: flex;
   justify-content: space-between;
 `;
@@ -16,6 +16,9 @@ const Title = styled.div`
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   margin-left: 20px;
+  &:hover {
+    color: "#9198e5";
+  }
 `;
 
 const Image = styled.img`
@@ -24,13 +27,15 @@ const Image = styled.img`
 `;
 
 const Count = styled.span`
-  background: orange;
+  background-color: ${(props) => props.color};
   border-radius: 50%;
+  color: black;
   padding: 4px 8px;
   position: absolute;
   right: 10px;
   top: -5px;
   font-size: 12px;
+  visibility: ${(props) => (props.show ? "visible" : "hidden")};
 `;
 
 const Container = styled.div`
@@ -49,7 +54,9 @@ class Navbar extends Component {
               alt="cart icon"
               src="https://cdn-icons-png.flaticon.com/128/3171/3171927.png"
             />
-            <Count>3</Count>
+            <Count color="#9198e5" show={true}>
+              3
+            </Count>
           </Container>
         </Nav>
       </>
