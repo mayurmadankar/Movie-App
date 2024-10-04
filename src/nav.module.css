@@ -1,0 +1,47 @@
+/* Nav */
+.nav {
+    width: 100%;
+    height: 45px;
+    background: linear-gradient(#bc16dd, #251bb1);
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  /* Title */
+  .title {
+    font-size: 30px;
+    color: #fff;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+    margin-left: 20px;
+  }
+  
+  .title:hover {
+    color: #9198e5;
+  }
+  
+  /* Image */
+  .image {
+    height: 40px;
+    margin-right: 20px;
+  }
+  
+  /* Count */
+  .count {
+    background-color: #bc16dd; /* This variable should be set dynamically */
+    border-radius: 50%;
+    color: white;
+    padding: 4px 8px;
+    position: absolute;
+    right: 10px;
+    top: -5px;
+    font-size: 12px;
+  }
+  
+  /* Container */
+  .container {
+    position: relative;
+    cursor: pointer;
+  }
+  
